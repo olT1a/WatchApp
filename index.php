@@ -21,7 +21,7 @@
         <ul class="navbar-nav">
             
             <li class="nav-item">
-            <a class="nav-link" href="personal_area.php">Area personale</a>
+            <a class="nav-link" href="personal_area.php">Personal Area</a>
             </li>
 
             <li class="nav-item">
@@ -34,6 +34,10 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="login_page.php">Login</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">Logout</a>
             </li>
 
         </ul> 

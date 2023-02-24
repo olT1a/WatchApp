@@ -1,29 +1,51 @@
 <!DOCTYPE html>
-<html>
 
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Registrati</title>
+        <title>WatchApp</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
+    <body>
+    <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
 
-    <body class="bg-dark p-2 text-dark bg-opacity-25">
-    <div class="border border-primary p-2 mb-2 rounded position-absolute top-50 start-50 border-2 translate-middle bg-body-secondary">
-        <h1 class="text-center">Sign up</h1>
+                <div class="mb-md-5 mt-md-4 pb-5">
 
-            <form method="POST" action="./registration.php">
-                <input name="mail" type="text" placeholder="Mail" class="rounded position-absolute"><br><br>
-                <input name="user" type="text" placeholder="Username" class="rounded position-absolute"><br><br>
-                <input name="pwd" type="password" placeholder="Password" class="rounded position-absolute"><br><br>
+                <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2><br>
 
-                <input type="submit" value="sign up" class="container text-center btn btn-primary"><br><br>    
-            </form>
-        <a href="login_page.php">Torna alla schermata di login</a>
+                <form method="POST" action="registration.php">
+                <div class="form-outline form-white mb-4">
+                <input type="mail" name="mail" id="typeEmailX" placeholder="mail" class="form-control form-control-lg"/><br>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <input type="text" name="user" id="typeUserX" placeholder="username" class="form-control form-control-lg"/><br>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <input type="password" name="pwd" id="typePasswordX" placeholder="password" class="form-control form-control-lg"/><br>
+                </div>
+
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                
+                </form>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    </section>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>

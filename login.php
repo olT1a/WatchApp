@@ -4,19 +4,19 @@
 
    $utente = $_POST['user'];
    $pwd = $_POST['pwd'];
-  
-    
-    $query = "SELECT * FROM credentials WHERE username='$utente'";
+   $pass = md5($pwd);
+   
+    $query = "SELECT * FROM user WHERE username='$utente' AND password='$pass'";
     if($result = $connection->query($query)){
-        if($result->num_rows == 1){
-            $row = $result->fetch_array(MYSQLI_ASSOC);
-            if(password_verify($pwd, $row['password'])){
-                echo "benvenuto";
-                session_start();
-                $_SESSION['user_id'] = $row['user_id'];
-                $_SESSION['username'] = $row['username'];
-                header("location: index.php");
-            }
+        if($result->num_rows > 0){
+            $row = $result->fetch_array();
+            session_start();
+            $_SESSION['id_utente'] = $row['id_utente'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['password'] = $row['password'];
+            header("location:index.php");
+        }else{
+            echo "credenziali errate!";
         }
     }
     

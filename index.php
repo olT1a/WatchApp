@@ -1,3 +1,7 @@
+<?php
+require('check_id.php');
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -21,7 +25,7 @@
         <ul class="navbar-nav">
             
             <li class="nav-item">
-            <a class="nav-link" href="personal_area.php">Personal Area</a>
+                <a class="nav-link" href="personal_area.php">Personal Area</a>
             </li>
 
             <li class="nav-item">
@@ -41,7 +45,7 @@
             </li>
 
         </ul> 
-    </div>
+        </div>
     </div>
     </nav>
         

@@ -5,7 +5,7 @@
 
    $utente = $_POST['user'];
    $pwd = $_POST['pwd'];
-   $pass = md5($pwd);
+   $pass = hash("sha512",($pwd));
    
     $query = "SELECT * FROM user WHERE username='$utente' AND password='$pass'";
     if($result = $connection->query($query)){
@@ -13,6 +13,7 @@
             $row = $result->fetch_array();
             session_start();
             $_SESSION['id_utente'] = $row['id_utente'];
+            $_SESSION['mail'] = $row['mail'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['password'] = $row['password'];
             header("location:index.php");

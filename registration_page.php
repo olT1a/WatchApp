@@ -34,7 +34,7 @@
                     <input type="password" name="pwd" id="typePasswordX" placeholder="password" class="form-control form-control-lg"/><br>
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
                 
                 </form>
                 </div>

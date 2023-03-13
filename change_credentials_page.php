@@ -1,4 +1,6 @@
-
+<?php 
+session_start(); 
+?>
 <!DOCTYPE html>
 
 <html>
@@ -25,18 +27,24 @@
                 <form method="POST" action="change_credentials.php">
 
                 <div class="form-outline form-white mb-4">
-                    <input type="mail" name="mail" id="typeEmailX" placeholder="mail" class="form-control form-control-lg"/><br>
+                    <label>Mail</label>
+                    <input type="mail" name="mail" id="typeEmailX" placeholder="mail" class="form-control form-control-lg" value="<?php echo $_SESSION['mail'] ?>"/><br>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <input type="text" name="user" id="typeEmailX" placeholder="username" class="form-control form-control-lg"/><br>
+                    <label>Username</label>
+                    <input type="text" name="user" id="typeEmailX" placeholder="username" class="form-control form-control-lg" value="<?php echo $_SESSION['username'] ?>"/><br>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <input type="password" name="pwd" id="typePasswordX" placeholder="password" class="form-control form-control-lg"/><br>
+                    <input type="password" name="pwd" id="typePasswordX" placeholder=" old password" class="form-control form-control-lg"/><br>
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Cambia</button>
+                <div class="form-outline form-white mb-4">
+                    <input type="password" name="pwd" id="typePasswordX" placeholder="new password" class="form-control form-control-lg"/><br>
+                </div>
+
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Change</button>
                 
                 </form>
                 

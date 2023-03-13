@@ -16,8 +16,6 @@ session_start();
         <h1><?php echo "Area personale di" . " " . $_SESSION['username']; ?></h1>
         
         <div>
-            <label>Nome utente: <?php echo $_SESSION['username']; ?></label><br>
-            <label>Password: <?php echo $_SESSION['password']; ?></label><br>
             <input type="submit" value="cambia credenziali" onclick="redirect()">
             <script src="redirect.js"></script>
         </div>

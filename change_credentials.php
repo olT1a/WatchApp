@@ -22,14 +22,14 @@ if (!empty($_POST['new_pwd'])) {
         $connection->query($update);
         header("location:login_page.php");
         session_destroy();
-      }else{
+      } else {
         echo "credenziali errate";
         header("location: change_credentials_page.php");
       }
     }
   }
 
-}else{
+} else {
   $update = "UPDATE user SET mail='$mail', username='$utente' WHERE id_utente='$id_session'";
   $connection->query($update);
   header("location:login_page.php");

@@ -1,5 +1,5 @@
 <?php 
-session_start(); 
+require('check_id.php');
 ?>
 <!DOCTYPE html>
 
@@ -28,20 +28,20 @@ session_start();
 
                 <div class="form-outline form-white mb-4">
                     <label>Mail</label>
-                    <input type="mail" name="mail" id="typeEmailX" placeholder="mail" class="form-control form-control-lg" value="<?php echo $_SESSION['mail'] ?>"/><br>
+                    <input type="mail" name="mail" placeholder="mail" class="form-control form-control-lg" value="<?php echo $_SESSION['mail'] ?>"/><br>
                 </div>
 
                 <div class="form-outline form-white mb-4">
                     <label>Username</label>
-                    <input type="text" name="user" id="typeEmailX" placeholder="username" class="form-control form-control-lg" value="<?php echo $_SESSION['username'] ?>"/><br>
+                    <input type="text" name="user" placeholder="username" class="form-control form-control-lg" value="<?php echo $_SESSION['username'] ?>"/><br>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <input type="password" name="pwd" id="typePasswordX" placeholder=" old password" class="form-control form-control-lg"/><br>
+                    <input type="password" name="old_pwd" placeholder="old password" class="form-control form-control-lg"/><br>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <input type="password" name="pwd" id="typePasswordX" placeholder="new password" class="form-control form-control-lg"/><br>
+                    <input type="password" name="new_pwd" placeholder="new password" class="form-control form-control-lg"/><br>
                 </div>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Change</button>

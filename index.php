@@ -1,5 +1,5 @@
 <?php
-require('check_id.php');
+session_start();
 ?>
 
 <!DOCTYPE html>

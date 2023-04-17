@@ -1,5 +1,6 @@
 <?php
-require('check_id.php');
+require('../app/functions.php');
+//checkId();
 ?>
 <!DOCTYPE html>
 
@@ -13,6 +14,10 @@ require('check_id.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="js/redirect.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -31,10 +36,10 @@ require('check_id.php');
 
                                 <div class="form-outline form-white mb-4">
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit"
-                                        onclick="redirect()">Login</button>
-                                    <script src="redirect.js"></script><br><br>
+                                        onclick="redirect()">Change credentials</button>
+                                    <br><br>
                                 </div>
-                                <a href="logout.php">Logout</a>
+                                <a href="LogoutHandler">Logout</a>
                             </div>
 
                         </div>
@@ -44,9 +49,7 @@ require('check_id.php');
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
+
 
 </body>
 

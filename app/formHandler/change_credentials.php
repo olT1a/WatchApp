@@ -1,13 +1,15 @@
 <?php
+
 $update = null;
-require('connection.php');
-require('check_id.php');
+require('../app/database/connection.php');
+require('../app/functions.php');
+checkId();
 
 $id_session = $_SESSION['id_utente'];
 $mail = $_POST['mail'];
 $utente = $_POST['user'];
 $new_pass;
-//isset($_POST['new_pwd'])
+
 if (!empty($_POST['new_pwd'])) {
   $old_pwd = $_POST['old_pwd'];
   $old_pass = hash("sha512", ($old_pwd));
@@ -20,11 +22,13 @@ if (!empty($_POST['new_pwd'])) {
         $new_pass = hash("sha512", ($_POST['new_pwd']));
         $update = "UPDATE user SET mail='$mail', username='$utente', password='$new_pass' WHERE id_utente='$id_session'";
         $connection->query($update);
-        header("location:login_page.php");
         session_destroy();
+        header("location:login");
+        //logout
+        
       } else {
         echo "credenziali errate";
-        header("location: change_credentials_page.php");
+        header("location: change_credentials");
       }
     }
   }
@@ -32,8 +36,8 @@ if (!empty($_POST['new_pwd'])) {
 } else {
   $update = "UPDATE user SET mail='$mail', username='$utente' WHERE id_utente='$id_session'";
   $connection->query($update);
-  header("location:login_page.php");
   session_destroy();
+  header("location:login");
 }
 
 

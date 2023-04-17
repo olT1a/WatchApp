@@ -1,3 +1,7 @@
+<?php
+require('../app/functions.php');
+checkId();
+?>
 <!DOCTYPE html>
 
 <html>
@@ -22,27 +26,38 @@
 
                             <div class="mb-md-5 mt-md-4 pb-5">
 
-                                <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2><br>
+                                <h2 class="fw-bold mb-2 text-uppercase">Change credentials</h2><br>
 
-                                <form method="POST" action="registration.php">
+                                <form method="POST" action="change_credentialsHandler">
+
                                     <div class="form-outline form-white mb-4">
-                                        <input type="mail" name="mail" id="typeEmailX" placeholder="mail"
+                                        <label>Mail</label>
+                                        <input type="mail" name="mail" placeholder="mail"
+                                            class="form-control form-control-lg"
+                                            value="<?php echo $_SESSION['mail'] ?>" /><br>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label>Username</label>
+                                        <input type="text" name="user" placeholder="username"
+                                            class="form-control form-control-lg"
+                                            value="<?php echo $_SESSION['username'] ?>" /><br>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" name="old_pwd" placeholder="old password"
                                             class="form-control form-control-lg" /><br>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
-                                        <input type="text" name="user" id="typeUserX" placeholder="username"
+                                        <input type="password" name="new_pwd" placeholder="new password"
                                             class="form-control form-control-lg" /><br>
                                     </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <input type="password" name="pwd" id="typePasswordX" placeholder="password"
-                                            class="form-control form-control-lg" /><br>
-                                    </div>
-
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Change</button>
 
                                 </form>
+
                             </div>
 
                         </div>

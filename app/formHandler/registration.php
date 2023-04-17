@@ -1,6 +1,6 @@
 <?php
 
-require('connection.php');
+require('../app/database/connection.php');
 
 $mail = $_POST['mail'];
 $utente = $_POST['user'];
@@ -9,7 +9,7 @@ $pass = hash("sha512", $pwd);
 
 $sql = "INSERT INTO user (mail, username, password) VALUES ('$mail', '$utente', '$pass')";
 if ($connection->query($sql) === true) {
-    header("location:login_page.php");
+    header("location:login");
 }
 
 ?>

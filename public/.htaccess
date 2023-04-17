@@ -1,0 +1,12 @@
+RewriteEngine On
+#Riscrive l'engine di apache. Gli si sta dicendo 
+#che ogni file richiesto o cartelle non esistenti 
+#non viene lanciato l'errore del not found e continua qua.
+
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Questa regola indica che la richiesta tipo /index viene
+#interpretata index.php?url=index in modo da gestire le richieste e 
+# richiamare la giusta view.
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

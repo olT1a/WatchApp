@@ -24,14 +24,14 @@
 
                                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2><br>
 
-                                <form method="POST" action="login.php">
+                                <form method="POST" action="loginHandler">
                                     <div class="form-outline form-white mb-4">
-                                        <input type="text" name="user" id="typeEmailX" placeholder="username"
+                                        <input type="text" name="user" placeholder="username"
                                             class="form-control form-control-lg" required /><br>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
-                                        <input type="password" name="pwd" id="typePasswordX" placeholder="password"
+                                        <input type="password" name="pwd" placeholder="password"
                                             class="form-control form-control-lg" required /><br>
                                     </div>
 
@@ -39,7 +39,7 @@
 
                                 </form>
                                 <br>
-                                <a href="registration_page.php">Non sei ancora registrato? Registrati</a>
+                                <a href="signUp">Non sei ancora registrato? Registrati</a>
                             </div>
 
                         </div>

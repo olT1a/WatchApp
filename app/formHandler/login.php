@@ -1,6 +1,6 @@
 <?php
-require('connection.php');
-require('check_id.php');
+require('../app/database/connection.php');
+require('../app/functions.php');
 
 
 $utente = $_POST['user'];
@@ -15,7 +15,7 @@ if ($result = $connection->query($query)) {
         $_SESSION['mail'] = $row['mail'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['password'] = $row['password'];
-        header("location:index.php");
+        header("Location:home");
     } else {
         echo "credenziali errate!";
     }

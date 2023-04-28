@@ -55,7 +55,7 @@ switch ($request) {
         break;
 
     case 'RegistrationHandler':
-        $userController->RegistrationHandler();
+        $userController->signUpHandler();
         break;
 
     default:

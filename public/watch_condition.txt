@@ -1,0 +1,121 @@
+Brand new -> nuovo,perfetto,mai indossato, carte e scatola originali, funziona bene, plastica originale
+Never worn -> nuovo,perfetto, mai indossato, senza carte e scatola originali, funziona bene, plastica originale
+Super mint -> sembra nuovo, può o non può avere scatola e carte originali, funziona bene
+Mint -> si vede che è usato se si usa una lente, il cinturiono non è usurato
+Super excellent -> si vede che è usato, il cinturino è usurato
+Excellent -> usato, funziona ma potrebbe avere dei ritardi di qualche secondo nel segnare il tempo
+Fair -> usato tanto, potrebbe avere graffi e avere ritardi di qualche minuto nel segnare il tempo
+Poor -> usato veramente tanto, potrebbero mancare delle parti, necessita di molti lavori per poter essere indossato
+
+
+0 - Unworn
+
+New from old warehouse stock or pre owned unworn with delivery stickers still in-tact.
+
+
+
+ New items may show signs of storage and from being displayed in our stores.
+
+
+
+ Items may or may not still have the original delivery stickers on.
+
+
+1 - Mint
+
+None or small signs of usage.
+
+
+
+Movement in very good condition.
+
+
+
+Movement serviced to an adequate extent.
+
+
+
+May have been polished, some very small scratches from being on display might be visible.
+
+
+
+Dial, Hands, Glass, Case in very good condition.
+
+
+
+Bracelet not showing signs of wear and in nearly new condition.
+
+
+2 - Fine
+
+Small or visible signs of use and scratches.
+
+
+
+No big dents, No hair-line cracks.
+
+
+
+Movement in good condition, maybe serviced.
+
+
+
+Repairs carried out using original movements only.
+
+
+
+May have been cleaned and polished.
+
+
+
+Bracelet not overly worn.
+
+
+3 - Fair
+
+Visible signs of use on the case and/ or the dial.
+
+
+
+Glass may have been replaced.
+
+
+
+Small marks.
+
+
+
+ Fully functional.
+
+
+
+May have been polished.
+
+
+
+May contain non-original spare parts.
+
+
+
+ Movement may need servicing.
+
+
+
+ Bracelet may be slightly stretched/ non original.
+
+
+4 - Poor 
+
+Heavy signs of usage.
+
+
+
+Case heavly  scratched.
+
+
+
+Dial, hands and/or glass need rep
+
+
+
+May have been cleaned and polished.

@@ -1,6 +1,6 @@
 <?php
 require('../app/functions.php');
-//checkId();
+checkId();
 ?>
 <!DOCTYPE html>
 
@@ -30,7 +30,7 @@ require('../app/functions.php');
 
                             <div class="mb-md-5 mt-md-4 pb-5">
 
-                                <h2 class="fw-bold mb-2 text-uppercase">
+                                <h2 class="fw-bold mb-2">
                                     <?php echo "Area personale di" . " " . $_SESSION['username']; ?>
                                 </h2><br>
 

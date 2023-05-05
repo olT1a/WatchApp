@@ -13,7 +13,15 @@ class UserController
     }
     public function loginHandler()
     {
+        $utente = $_POST['user'];
+        $pwd = $_POST['pwd'];
+        $pass = hash("sha512", $pwd);
+
+        $this->userModel->setUsername($utente);
+        $this->userModel->setPassword($pass);
+        
         $response = $this->userModel->login();
+
         switch($response)
         {
             case 'OK':
@@ -33,6 +41,15 @@ class UserController
 
     public function signUpHandler()
     {
+        $mail = $_POST['mail'];
+        $utente = $_POST['user'];
+        $pwd = $_POST['pwd'];
+        $pass = hash("sha512", $pwd);
+        
+        $this->userModel->setMail($mail);
+        $this->userModel->setUsername($utente);
+        $this->userModel->setPassword($pass);
+
         $response = $this->userModel->addUser();
 
         switch($response)
@@ -47,9 +64,16 @@ class UserController
         }
     }
 
-    public function change_credentialsHandler()
+    public function change_credentials()
     {
-        checkId();
+        $mail = $_POST['mail'];
+        $utente = $_POST['user'];
+        $id_session = $_SESSION['id_utente'];
+
+        $this->userModel->setId($id_session);
+        $this->userModel->setMail($mail);
+        $this->userModel->setUsername($utente);
+
         $response = $this->userModel->change_credentials();
 
         switch($response)
@@ -76,8 +100,7 @@ class UserController
 
     public function LogoutHandler()
     {
-        checkId();
-        $response = $this->userModel->change_credentials();
+        $response = $this->userModel->logout();
         switch($response)
         {
             case true:

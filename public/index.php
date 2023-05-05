@@ -47,7 +47,7 @@ switch ($request) {
         break;
 
     case 'change_credentialsHandler':
-        $userController->change_credentialsHandler();
+        $userController->change_credentials();
         break;
 
     case 'LogoutHandler':

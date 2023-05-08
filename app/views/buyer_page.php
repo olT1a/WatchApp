@@ -1,3 +1,8 @@
+<?php
+require('../app/functions.php');
+checkId();
+?>
+
 <!DOCTYPE html>
 
 <html>

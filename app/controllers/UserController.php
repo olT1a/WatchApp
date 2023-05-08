@@ -16,7 +16,7 @@ class UserController
         $utente = $_POST['user'];
         $pwd = $_POST['pwd'];
         $pass = hash("sha512", $pwd);
-
+        
         $this->userModel->setUsername($utente);
         $this->userModel->setPassword($pass);
         

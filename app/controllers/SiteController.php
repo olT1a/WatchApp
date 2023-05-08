@@ -38,5 +38,11 @@ class SiteController
     {
         require_once "../app/views/seller_page.php";
     }
+
+    public function notFound()
+    {
+        require_once "../app/views/404.php";
+    }
+
 }
 ?>

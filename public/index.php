@@ -2,12 +2,14 @@
 
 use App\controllers\SiteController;
 use App\controllers\UserController;
+use App\controllers\WatchController;
 
 session_start();
 require_once '../vendor/autoload.php';
 $request = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_SPECIAL_CHARS);
 $siteController = new SiteController();
 $userController = new UserController();
+$watchController = new WatchController();
 
 switch ($request) {
     case 'home':
@@ -58,10 +60,15 @@ switch ($request) {
         $userController->signUpHandler();
         break;
 
+    case 'brandHandler':
+        $watchController->brandHandler();
+        break;
+
+    case 'modelHandler':
+        $watchController->modelHandler();
+        break;
+        
     default:
-        //http_response_code(404);
-        //require_once "../app/views/404.php";
-        //eliminare 404.php
-        $siteController->home();
+        $siteController->notFound();
         break;
 }

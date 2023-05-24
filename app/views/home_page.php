@@ -33,10 +33,6 @@
                         <a class="nav-link" href="sell">Sell</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="buy">Buy</a>
-                    </li>
-
                     <?php
                     if (!isset($_SESSION['id_utente'])) {
                         echo '<li class="nav-item">

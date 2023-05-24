@@ -10,6 +10,7 @@ class WatchModel
     protected float $price;
     protected string $condition;
     protected string $img;
+    protected bool $disponibile;
     protected int $id_model;
     protected int $id_brand;
     protected int $id_user;
@@ -42,6 +43,10 @@ class WatchModel
     public function setImg(string $img): void
     {
         $this->img = $img;
+    }
+    public function setDisponibile(bool $disponibile): void
+    {
+        $this->disponibile = $disponibile;
     }
 
     public function setID_model(int $id_model): void
@@ -97,13 +102,20 @@ class WatchModel
         return $this->img;
     }
 
+    public function getDisponibile(): bool
+    {
+        return $this->disponibile;
+    }
+
     public function findBrand(): array
     {
         $row = array();
         $finalresult = array();
         $i = 0;
         $query = 'SELECT * FROM brand';
-        $result = $this->connection->query($query);
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;
@@ -113,6 +125,7 @@ class WatchModel
         } else {
             return array('message' => 'error');
         }
+
     }
 
     public function findModel(): array
@@ -121,8 +134,11 @@ class WatchModel
         $finalresult = array();
         $i = 0;
         $brandName = $_POST['brandName'];
-        $query = "SELECT * FROM model WHERE id_brand='$brandName'";
-        $result = $this->connection->query($query);
+        $query = "SELECT * FROM model WHERE id_brand=?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $brandName);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;
@@ -141,8 +157,11 @@ class WatchModel
         $finalresult = array();
         $i = 0;
         $modelName = $_POST['modelName'];
-        $query = "SELECT * FROM model WHERE id_model='$modelName'";
-        $result = $this->connection->query($query);
+        $query = "SELECT * FROM model WHERE id_model=?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $modelName);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;
@@ -157,11 +176,10 @@ class WatchModel
     
     public function uploadsale(): string
     {
-        /*$img = $_FILES['img']['name'];
-        $tmp_img = $_FILES['img']['tmp_name'];
-        $folder = "./img/" . $img;*/
-        $query = "INSERT INTO watch (id_watch,price, watch_condition, img, id_model, id_brand, id_utente) VALUES (null, '$this->price', '$this->condition', '$this->img', '$this->id_model', '$this->id_brand', '$this->id_user')";
-        if($this->connection->query($query) === true){
+        $query = "INSERT INTO watch (price, watch_condition, img, disponibile, id_model, id_brand, id_utente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("dssiiii", $this->price, $this->condition, $this->img, $this->disponibile, $this->id_model, $this->id_brand,$this->id_user);
+        if($stmt->execute() == true){
             return "ADDED";
         } else{
             return "ERROR";
@@ -174,7 +192,9 @@ class WatchModel
         $finalresult = array();
         $i = 0;
         $query = "SELECT * FROM watch join model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand JOIN user ON watch.id_utente=user.id_utente";
-        $result = $this->connection->query($query);
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;

@@ -41,7 +41,7 @@ class WatchController
         $id_user = intval($_SESSION['id_utente']);
         $id_brand = intval($_POST['id_brand']);
         $id_model = intval($_POST['id_model']);
-
+        $disponibile = true;
         //var_dump($id_model);
 
         $this->watchModel->setPrice($price);
@@ -50,7 +50,8 @@ class WatchController
         $this->watchModel->setID_model($id_model);
         $this->watchModel->setImg($img);
         $this->watchModel->setCondition($watch_condition);
-
+        $this->watchModel->setDisponibile($disponibile);
+        
        $response = $this->watchModel->uploadsale();
        switch($response)
        {

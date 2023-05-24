@@ -73,7 +73,7 @@ checkId();
 
                                     <div class="form-outline form-white mb-4">
                                         <label>Price (€)</label>
-                                        <input type="number" min=0 name="price" class="form-control form-control-lg"
+                                        <input type="number" min=0 max=2000000 name="price" class="form-control form-control-lg"
                                             required>
                                     </div>
 
@@ -113,11 +113,6 @@ checkId();
                     text: item.brand_name
                 }));
             });
-
-            // response.map(brand => {
-            //     document.getElementById('brand_selection').innerHTML += `<option value=${brand.id_brand}>${brand.brand_name}</option>`
-            //     $("#rocchi").val(brand.id_brand);
-            // })
         },
         error: response => {
             console.log(response)
@@ -153,16 +148,6 @@ checkId();
                         text: item.model_name
                     }));
                 });
-
-                // document.getElementById('model_selection').innerHTML = ''
-                // if (response.message != 'error') {
-                //     response.map(model => {
-                //         document.getElementById('model_selection').innerHTML += `<option value=${model.id_model}>${model.model_name}</option>`
-                //         $("#oscar").val(model.id_model);
-                //     })
-                // } //else {
-
-                //}
             },
             error: response => {
                 console.log(response)
@@ -170,7 +155,6 @@ checkId();
         })
     })
 
-    //per reference
     document.getElementById('model_selection').addEventListener('change', () => {
         $("#reference_selection option").each(function () {
             $(this).remove();
@@ -197,14 +181,6 @@ checkId();
                         text: item.reference
                     }));
                 });
-                // document.getElementById('reference_selection').innerHTML = ''
-                // if (response.message != 'error') {
-                //     response.map(model => {
-                //         document.getElementById('reference_selection').innerHTML += `<option value=${model.id_model}>${model.reference}</option>`
-                //     })
-                // } //else {
-
-                // //}
             },
             error: response => {
                 console.log(response)

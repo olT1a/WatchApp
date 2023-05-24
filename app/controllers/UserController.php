@@ -31,10 +31,6 @@ class UserController
             case 'credenziali errate':
                 header("location:login");
                 break;
-
-            case 'problema':
-                echo 'non è stato possibile effettuare il login';   //la query non viene eseguita
-
         }
        
     }
@@ -84,11 +80,6 @@ class UserController
 
             case 'credenziali errate':
                 header("location: change_credentials");
-                break;
-
-            case 'problema':
-                echo 'non è stato possibile cambiare le credenziali';
-                header("location: change_credenziali");
                 break;
 
             case 'utente non trovato':

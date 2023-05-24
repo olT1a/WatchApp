@@ -44,5 +44,10 @@ class SiteController
         require_once "../app/views/404.php";
     }
 
+    public function notDisponible()
+    {
+        require_once "../app/views/notDisponible.php";
+    }
+
 }
 ?>

@@ -39,6 +39,11 @@ checkId();
                                         onclick="redirect()">Change credentials</button>
                                     <br><br>
                                 </div>
+
+                                <div class="form-outline form-white mb-4">
+
+                                    <a href="#" class="btn btn-outline-light btn-lg px-5" id="btnBuy">purchases</a>
+                                </div>
                                 <a href="LogoutHandler">Logout</a>
                             </div>
 

@@ -82,6 +82,11 @@ switch ($request) {
     case 'watchHandler':
         $watchController->watchHandler();
         break;
+
+    case 'notDisponible':
+        $siteController->notDisponible();
+        break;
+        
     default:
         $siteController->notFound();
         break;

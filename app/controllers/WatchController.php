@@ -32,9 +32,7 @@ class WatchController
     }
 
     public function saleHandler()
-    {
-        //richiamare una funzione che ottiene id di brand e model
-        
+    {        
         $img = $_FILES['img']['name'];
         $tmp_img = $_FILES['img']['tmp_name'];
         $folder = "./img/" . $img;
@@ -44,7 +42,7 @@ class WatchController
         $id_brand = intval($_POST['id_brand']);
         $id_model = intval($_POST['id_model']);
 
-        var_dump($id_model);
+        //var_dump($id_model);
 
         $this->watchModel->setPrice($price);
         $this->watchModel->setID_user($id_user);

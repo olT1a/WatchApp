@@ -46,6 +46,30 @@
         </div>
     </nav>
 
+    <div class='container my-5'>
+        <?php
+        $ip = '127.0.0.1';
+        $username = 'root';
+        $password = '';
+        $database = 'watchapp';
+
+        $connection = new mysqli($ip, $username, $password, $database);
+
+        if ($connection->connect_error) {
+            die("Connection failed: " . $connection->connect_error);
+        }
+        $query = "SELECT * FROM watch";
+        if ($result = $connection->query($query)){
+            if($result->num_rows > 0){
+                while ($row = $result->fetch_array()) {
+                    $img = $row['img'];
+                    echo "<img src='./img/$img'>";
+                }
+            }
+        }
+
+        ?>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>

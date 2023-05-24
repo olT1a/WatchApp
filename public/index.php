@@ -12,6 +12,9 @@ $userController = new UserController();
 $watchController = new WatchController();
 
 switch ($request) {
+    case '':
+        header("Location: home");
+        break;
     case 'home':
         $siteController->home();
         break;
@@ -66,6 +69,14 @@ switch ($request) {
 
     case 'modelHandler':
         $watchController->modelHandler();
+        break;
+
+    case 'referenceHandler':
+        $watchController->referenceHandler();
+        break;
+    
+    case 'saleHandler':
+        $watchController->saleHandler();
         break;
         
     default:

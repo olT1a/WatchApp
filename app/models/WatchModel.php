@@ -9,8 +9,10 @@ class WatchModel
     protected string $case_size;
     protected float $price;
     protected string $condition;
+    protected string $img;
     protected int $id_model;
     protected int $id_brand;
+    protected int $id_user;
 
     public function __construct()
     {
@@ -37,6 +39,11 @@ class WatchModel
         $this->condition = $condition;
     }
 
+    public function setImg(string $img): void
+    {
+        $this->img = $img;
+    }
+
     public function setID_model(int $id_model): void
     {
         $this->id_model = $id_model;
@@ -47,34 +54,47 @@ class WatchModel
         $this->id_brand = $id_brand;
     }
 
-    public function getID(int $id): int
+    public function setID_user(int $id_user): void
+    {
+        $this->id_user = $id_user;
+    }
+
+    public function getID(): int
     {
         return $this->id;
     }
 
-    public function getCasesize(string $case_size): string
+    public function getCasesize(): string
     {
         return $this->case_size;
     }
 
-    public function getPrice(float $price): float
+    public function getPrice(): float
     {
         return $this->price;
     }
 
-    public function getCondition(string $condition): string
+    public function getCondition(): string
     {
         return $this->condition;
     }
 
-    public function getID_model(int $id_model): int
+    public function getID_model(): int
     {
         return $this->id_model;
     }
 
-    public function getID_brand(int $id_brand): int
+    public function getID_brand(): int
     {
         return $this->id_brand;
+    }
+    public function getID_user(): int
+    {
+        return $this->id_user;
+    }
+    public function getImg(): string
+    {
+        return $this->img;
     }
 
     public function findBrand(): array
@@ -113,6 +133,39 @@ class WatchModel
             return array('message' => 'error');
         }
 
+    }
+
+    public function findReference(): array
+    {
+        $row = array();
+        $finalresult = array();
+        $i = 0;
+        $modelName = $_POST['modelName'];
+        $query = "SELECT * FROM model WHERE id_model='$modelName'";
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_array()) {
+                $finalresult[$i] = $row;
+                $i++;
+            }
+            return $finalresult;
+        } else {
+            return array('message' => 'error');
+        } 
+    }
+    
+    
+    public function uploadsale(): string
+    {
+        /*$img = $_FILES['img']['name'];
+        $tmp_img = $_FILES['img']['tmp_name'];
+        $folder = "./img/" . $img;*/
+        $query = "INSERT INTO watch (id_watch,price, watch_condition, img, id_model, id_brand, id_utente) VALUES (null, '$this->price', '$this->condition', '$this->img', '$this->id_model', '$this->id_brand', '$this->id_user')";
+        if($this->connection->query($query) === true){
+            return "ADDED";
+        } else{
+            return "ERROR";
+        }   
     }
 
 }

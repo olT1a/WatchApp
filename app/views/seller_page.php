@@ -32,24 +32,56 @@ checkId();
 
                                 <h2 class="fw-bold mb-2 text-uppercase">Sell</h2><br>
 
-                                <form method="POST" action="sell">
+                                <form method="POST" action="saleHandler" enctype="multipart/form-data">
                                     <div class="form-outline form-white mb-4">
-                                        <select name="brand" id="brand_selection" class="form-control form-control-lg">
+                                        <label>Brand</label>
+                                        <select name="id_brand" id="brand_selection"
+                                            class="form-control form-control-lg" required>
+                                            <option selected hidden disabled>Scegli una marca</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label>Model</label>
+                                        <select name="id_model" id="model_selection"
+                                            class="form-control form-control-lg" required>
+                                            <option selected hidden disabled>Scegli un modello</option>
 
                                         </select>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
-                                        <select name="brand" id="model_selection" class="form-control form-control-lg">
+                                        <label>Reference</label>
+                                        <select name="reference" id="reference_selection"
+                                            class="form-control form-control-lg" required>
 
                                         </select>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
-                                        <input type="password" name="pwd" placeholder="password"
-                                            class="form-control form-control-lg" /><br>
+                                        <label>Condition</label>
+                                        <select name="condition" id="condition_selection"
+                                            class="form-control form-control-lg" required>
+                                            <option selected hidden disabled>Scegli una condizione</option>
+                                            <option>Unworn</option>
+                                            <option>Mint</option>
+                                            <option>Fine</option>
+                                            <option>Fair</option>
+                                            <option>Poor</option>
+                                        </select>
                                     </div>
 
+                                    <div class="form-outline form-white mb-4">
+                                        <label>Price (€)</label>
+                                        <input type="number" min=0 name="price" class="form-control form-control-lg"
+                                            required>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label>Image</label>
+                                        <input type="file" name="img" class="form-control form-control-lg"
+                                            accept=".jpg, .jpeg, .png" required>
+                                    </div>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">sell</button>
 
                                 </form>
@@ -69,13 +101,23 @@ checkId();
 </body>
 <script>
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "brandHandler",
         dataType: "json",
         success: response => {
-            response.map(brand => {
-                document.getElementById('brand_selection').innerHTML += `<option value=${brand.id_brand}>${brand.brand_name}</option>`
-            })
+            console.log(response)
+
+            $.each(response, function (i, item) {
+                $('#brand_selection').append($('<option>', {
+                    value: item.id_brand,
+                    text: item.brand_name
+                }));
+            });
+
+            // response.map(brand => {
+            //     document.getElementById('brand_selection').innerHTML += `<option value=${brand.id_brand}>${brand.brand_name}</option>`
+            //     $("#rocchi").val(brand.id_brand);
+            // })
         },
         error: response => {
             console.log(response)
@@ -83,6 +125,19 @@ checkId();
     })
 
     document.getElementById('brand_selection').addEventListener('change', () => {
+        $("#model_selection option").each(function () {
+            $(this).remove();
+        });
+        $('#model_selection').append($('<option>', {
+            value: "",
+            text: "Seleziona un modello"
+        }));
+        $("#reference_selection option").each(function () {
+            $(this).remove();
+        });
+        $("#model_selection option").attr("disabled", "disabled");
+        $("#model_selection option").attr("hidden", "hidden");
+        $("#model_selection option").attr("selected", "selected");
         $.ajax({
             type: "POST",
             url: "modelHandler",
@@ -91,14 +146,65 @@ checkId();
             },
             dataType: "json",
             success: response => {
-                document.getElementById('model_selection').innerHTML = ''
-                if (response.message != 'error') {
-                    response.map(model => {
-                    document.getElementById('model_selection').innerHTML += `<option value=${model.id_model}>${model.model_name}</option>`
-                    })
-                } //else {
-                    
+
+                $.each(response, function (i, item) {
+                    $('#model_selection').append($('<option>', {
+                        value: item.id_model,
+                        text: item.model_name
+                    }));
+                });
+
+                // document.getElementById('model_selection').innerHTML = ''
+                // if (response.message != 'error') {
+                //     response.map(model => {
+                //         document.getElementById('model_selection').innerHTML += `<option value=${model.id_model}>${model.model_name}</option>`
+                //         $("#oscar").val(model.id_model);
+                //     })
+                // } //else {
+
                 //}
+            },
+            error: response => {
+                console.log(response)
+            }
+        })
+    })
+
+    //per reference
+    document.getElementById('model_selection').addEventListener('change', () => {
+        $("#reference_selection option").each(function () {
+            $(this).remove();
+        });
+        $('#reference_selection').append($('<option>', {
+            value: "",
+            text: "Seleziona una referenza"
+        }));
+        $("#reference_selection option").attr("disabled", "disabled");
+        $("#reference_selection option").attr("hidden", "hidden");
+        $("#reference_selection option").attr("selected", "selected");
+
+        $.ajax({
+            type: "POST",
+            url: "referenceHandler",
+            data: {
+                modelName: document.getElementById('model_selection').value
+            },
+            dataType: "json",
+            success: response => {
+                $.each(response, function (i, item) {
+                    $('#reference_selection').append($('<option>', {
+                        value: item.id_model,
+                        text: item.reference
+                    }));
+                });
+                // document.getElementById('reference_selection').innerHTML = ''
+                // if (response.message != 'error') {
+                //     response.map(model => {
+                //         document.getElementById('reference_selection').innerHTML += `<option value=${model.id_model}>${model.reference}</option>`
+                //     })
+                // } //else {
+
+                // //}
             },
             error: response => {
                 console.log(response)

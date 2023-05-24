@@ -25,6 +25,47 @@ class WatchController
         echo json_encode($response);
     }
 
+    public function referenceHandler()
+    {
+        $response = $this->watchModel->findReference();
+        echo json_encode($response);
+    }
+
+    public function saleHandler()
+    {
+        //richiamare una funzione che ottiene id di brand e model
+        
+        $img = $_FILES['img']['name'];
+        $tmp_img = $_FILES['img']['tmp_name'];
+        $folder = "./img/" . $img;
+        $watch_condition = $_POST['condition'];
+        $price = $_POST['price'];
+        $id_user = intval($_SESSION['id_utente']);
+        $id_brand = intval($_POST['id_brand']);
+        $id_model = intval($_POST['id_model']);
+
+        var_dump($id_model);
+
+        $this->watchModel->setPrice($price);
+        $this->watchModel->setID_user($id_user);
+        $this->watchModel->setID_brand($id_brand);
+        $this->watchModel->setID_model($id_model);
+        $this->watchModel->setImg($img);
+        $this->watchModel->setCondition($watch_condition);
+
+       $response = $this->watchModel->uploadsale();
+       switch($response)
+       {
+            case "ADDED":
+                header("location: home");
+                break;
+
+            case "ERROE":
+                echo "no";  
+                break;
+       }
+    }
+
 }
 
 

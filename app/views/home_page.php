@@ -52,10 +52,11 @@
             </div>
         </div>
     </nav>
-
-    <div class='container my-5' id="watches">
-
+    <center>
+    <div class='container my-5 row' id="watches">
+    
     </div>
+    </center>
     <script src='./js/watchHandler.js'></script>
     
 

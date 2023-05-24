@@ -173,7 +173,7 @@ class WatchModel
         $row = array();
         $finalresult = array();
         $i = 0;
-        $query = "SELECT * FROM watch";
+        $query = "SELECT * FROM watch join model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand JOIN user ON watch.id_utente=user.id_utente";
         $result = $this->connection->query($query);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {

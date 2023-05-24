@@ -168,6 +168,24 @@ class WatchModel
         }   
     }
 
+    public function watch(): array
+    {
+        $row = array();
+        $finalresult = array();
+        $i = 0;
+        $query = "SELECT * FROM watch";
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_array()) {
+                $finalresult[$i] = $row;
+                $i++;
+            }
+            return $finalresult;
+        } else {
+            return array('message' => 'error');
+        } 
+    }
+
 }
 
 ?>

@@ -64,6 +64,12 @@ class WatchController
        }
     }
 
+    public function watchHandler()
+    {
+        $response = $this->watchModel->watch();
+        echo json_encode($response);
+    }
+
 }
 
 

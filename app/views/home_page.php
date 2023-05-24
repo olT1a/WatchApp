@@ -9,6 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js"
+        integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -46,33 +53,12 @@
         </div>
     </nav>
 
-    <div class='container my-5'>
-        <?php
-        $ip = '127.0.0.1';
-        $username = 'root';
-        $password = '';
-        $database = 'watchapp';
+    <div class='container my-5' id="watches">
 
-        $connection = new mysqli($ip, $username, $password, $database);
-
-        if ($connection->connect_error) {
-            die("Connection failed: " . $connection->connect_error);
-        }
-        $query = "SELECT * FROM watch";
-        if ($result = $connection->query($query)){
-            if($result->num_rows > 0){
-                while ($row = $result->fetch_array()) {
-                    $img = $row['img'];
-                    echo "<img src='./img/$img'>";
-                }
-            }
-        }
-
-        ?>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
+    <script src='./js/watchHandler.js'></script>
+    
+
 </body>
 
 </html>

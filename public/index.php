@@ -79,6 +79,9 @@ switch ($request) {
         $watchController->saleHandler();
         break;
         
+    case 'watchHandler':
+        $watchController->watchHandler();
+        break;
     default:
         $siteController->notFound();
         break;

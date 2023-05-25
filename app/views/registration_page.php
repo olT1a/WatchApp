@@ -26,7 +26,7 @@
 
                                 <form method="POST" action="RegistrationHandler">
                                     <div class="form-outline form-white mb-4">
-                                        <input type="mail" name="mail" placeholder="mail"
+                                        <input type="email" name="mail" placeholder="mail"
                                             class="form-control form-control-lg" /><br>
                                     </div>
 

@@ -5,36 +5,19 @@ $.ajax({
     success: response => {
         console.log(response)
         response.map(watch => {
-            if(watch.disponibile == 1){
-            document.getElementById('watches').innerHTML += `
-                <div class='card col' style='width: 20rem;'>
-                    <div class='card-body'>
-                        <img src='./img/${ watch.img }' class='card-img-top' alt='...' style='max-height: 250px; width: auto;'>
-                        <h5 class='card-title'> Model: ${ watch.model_name }</h5>
-                        <h6 class='card-subtitle mb-2 text-body-secondary'>Brand: ${ watch.brand_name }</h6>
-                        <h6 class='card-subtitle mb-2 text-body-secondary'>Condition: ${ watch.watch_condition }</h6>
-                        <h6 class='card-subtitle mb-2 text-body-secondary'>Prezzo: ${ watch.price } €</h6>
-                        <h6 class='card-subtitle mb-2 text-body-secondary'>Venditore: ${ watch.username }</h6>
-                        <a href="purchaseHandler?id_watch=${watch.id_watch}" class="btn btn-success" id="btnBuy">Buy</a>
-                    </div>
-                </div>
-                `
-            } else{
                 document.getElementById('watches').innerHTML += `
-                <div class='card col' style='width: 20rem;'>
+                <div class='col col-lg my-2' style='width: 18rem;'>
+                    <img style='max-height: 250px; width: auto;' src='./img/${ watch.img }' class='card-img-top'>
                     <div class='card-body'>
-                        <img src='./img/${ watch.img }' class='card-img-top' alt='...' style='max-height: 250px; width: auto;'>
                         <h5 class='card-title'> Model: ${ watch.model_name }</h5>
                         <h6 class='card-subtitle mb-2 text-body-secondary'>Brand: ${ watch.brand_name }</h6>
                         <h6 class='card-subtitle mb-2 text-body-secondary'>Condition: ${ watch.watch_condition }</h6>
                         <h6 class='card-subtitle mb-2 text-body-secondary'>Prezzo: ${ watch.price } €</h6>
                         <h6 class='card-subtitle mb-2 text-body-secondary'>Venditore: ${ watch.username }</h6>
-                        <input type="hidden" name="watchId" value="${watch.id_watch}"> 
-                        <a href="notDisponible" class="btn btn-danger" id="btnBuy">Buy</a>
+                        ${ watch.disponibile ? `<a href="purchaseHandler?id_watch=${watch.id_watch}" class="btn btn-success" id="btnBuy">Buy</a>` : `<a href="notDisponible" class="btn btn-danger" id="btnBuy">Buy</a>` }
                     </div>
                 </div>
                 `
-            }
         })
     },
     error: response => {

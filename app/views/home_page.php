@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
 </head>
 
@@ -48,13 +48,13 @@
             </div>
         </div>
     </nav>
-    <center>
-    <div class='container my-5 row' id="watches">
-    
-    </div>
+    <center class='my-5'>
+        <div class='container my-5 row' id="watches">
+
+        </div>
     </center>
     <script src='./js/watchHandler.js'></script>
-    
+
 
 </body>
 

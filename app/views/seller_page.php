@@ -73,14 +73,14 @@ checkId();
 
                                     <div class="form-outline form-white mb-4">
                                         <label>Price (€)</label>
-                                        <input type="number" min=0 max=2000000 name="price" class="form-control form-control-lg"
-                                            required>
+                                        <input type="number" min=0 max=2000000 name="price"
+                                            class="form-control form-control-lg" required>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
                                         <label>Image</label>
                                         <input type="file" name="img" class="form-control form-control-lg"
-                                            accept=".jpg, .jpeg, .png" required>
+                                            accept="image/*" required>
                                     </div>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">sell</button>
 

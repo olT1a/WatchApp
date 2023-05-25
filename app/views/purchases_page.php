@@ -20,7 +20,7 @@ checkId();
 </head>
 
 <body>
-    <center>
+    <center class='my-5'>
         <h1>Purchases</h1>
         <div class='container my-5 row' id="purchases">
 

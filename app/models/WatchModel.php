@@ -14,10 +14,11 @@ class WatchModel
     protected int $id_model;
     protected int $id_brand;
     protected int $id_user;
+    protected int $id_venditore;
 
     public function __construct()
     {
-        $this->connection = new \mysqli('127.0.0.1', 'root', '', 'watchapp');
+        $this->connection = new \mysqli('127.0.0.1', 'watchapp', 'oscar', 'watchapp');
     }
 
     public function setID(int $id): void
@@ -64,6 +65,11 @@ class WatchModel
         $this->id_user = $id_user;
     }
 
+    public function setID_venditore(int $id_venditore): void
+    {
+        $this->id_venditore = $id_venditore;
+    }
+
     public function getID(): int
     {
         return $this->id;
@@ -96,6 +102,10 @@ class WatchModel
     public function getID_user(): int
     {
         return $this->id_user;
+    }
+    public function getID_venditore(): int
+    {
+        return $this->id_venditore;
     }
     public function getImg(): string
     {
@@ -196,9 +206,9 @@ class WatchModel
     {
         $this->connection->begin_transaction();
         try{
-            $query = "INSERT INTO watch (price, watch_condition, img, disponibile, id_model, id_brand, id_utente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO watch (price, watch_condition, img, disponibile, id_venditore, id_model, id_brand) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("dssiiii", $this->price, $this->condition, $this->img, $this->disponibile, $this->id_model, $this->id_brand,$this->id_user);
+            $stmt->bind_param("dssiiii", $this->price, $this->condition, $this->img, $this->disponibile, $this->id_venditore, $this->id_model, $this->id_brand);
             $stmt->execute();
             $this->connection->commit();
             return "ADDED";
@@ -216,7 +226,7 @@ class WatchModel
         $i = 0;
         $this->connection->begin_transaction();
         try {
-            $query = "SELECT * FROM watch join model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand JOIN user ON watch.id_utente=user.id_utente";
+            $query = "SELECT * FROM watch join model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand JOIN user ON watch.id_venditore=user.id_utente";
             $stmt = $this->connection->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();

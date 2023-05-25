@@ -13,7 +13,7 @@ class PurchaseModel
 
     public function __construct()
     {
-        $this->connection = new \mysqli('127.0.0.1', 'root', '', 'watchapp');
+        $this->connection = new \mysqli('127.0.0.1', 'watchapp', 'oscar', 'watchapp');
     }
 
     public function setID(int $id): void
@@ -90,9 +90,11 @@ class PurchaseModel
         $finalresult = array();
         $i = 0;
         $this->connection->begin_transaction();
-        try{
-            $query = "SELECT * FROM purchase join watch ON purchase.id_watch=watch.id_watch JOIN user ON purchase.id_utente=user.id_utente JOIN model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand";
+        $id_utente = $_SESSION['id_utente'];
+        try {
+            $query = "SELECT * FROM purchase join watch ON purchase.id_watch=watch.id_watch JOIN model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand JOIN user ON purchase.id_utente=user.id_utente WHERE purchase.id_utente=?";
             $stmt = $this->connection->prepare($query);
+            $stmt->bind_param('i', $id_utente);
             $stmt->execute();
             $result = $stmt->get_result();
             $this->connection->commit();
@@ -105,7 +107,7 @@ class PurchaseModel
             } else {
                 return array('message' => 'error');
             }
-        }catch(\mysqli_sql_exception $exception){
+        } catch (\mysqli_sql_exception $exception){
             $this->connection->rollback();
             return $exception;
         }

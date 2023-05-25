@@ -12,7 +12,7 @@ class UserModel
 
     public function __construct()
     {
-        $this->connection = new \mysqli('127.0.0.1', 'root', '', 'watchapp');
+        $this->connection = new \mysqli('127.0.0.1', 'watchapp', 'oscar', 'watchapp');
     }
 
     public function setId(int $id): void

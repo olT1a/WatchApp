@@ -33,6 +33,7 @@ checkId();
                                 <h2 class="fw-bold mb-2 text-uppercase">Sell</h2><br>
 
                                 <form method="POST" action="saleHandler" enctype="multipart/form-data">
+                                    <input type="hidden" name="id_venditore" value="<?php $_SESSION['id_utente']?>">
                                     <div class="form-outline form-white mb-4">
                                         <label>Brand</label>
                                         <select name="id_brand" id="brand_selection"
@@ -80,7 +81,7 @@ checkId();
                                     <div class="form-outline form-white mb-4">
                                         <label>Image</label>
                                         <input type="file" name="img" class="form-control form-control-lg"
-                                            accept="image/*" required>
+                                            accept=".jpg, .png, .jpeg" required>
                                     </div>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">sell</button>
 

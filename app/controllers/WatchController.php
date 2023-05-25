@@ -38,13 +38,13 @@ class WatchController
         move_uploaded_file($img['tmp_name'], $folder);
         $watch_condition = $_POST['condition'];
         $price = $_POST['price'];
-        $id_user = intval($_SESSION['id_utente']);
+        $id_venditore = intval($_SESSION['id_utente']);
         $id_brand = intval($_POST['id_brand']);
         $id_model = intval($_POST['id_model']);
         $disponibile = true;
 
         $this->watchModel->setPrice($price);
-        $this->watchModel->setID_user($id_user);
+        $this->watchModel->setID_venditore($id_venditore);
         $this->watchModel->setID_brand($id_brand);
         $this->watchModel->setID_model($id_model);
         $this->watchModel->setImg($img['name']);

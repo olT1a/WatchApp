@@ -52,45 +52,64 @@ class PurchaseModel
         return $this->disponibile;
     }
 
-    public function purchase()
+    public function purchase(): string
     {
         //carica sulla tabella purchase
-        $query = "INSERT INTO purchase (id_watch, id_utente) VALUES (?, ?)";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ii", $this->id_watch, $this->id_utente);
-        if ($stmt->execute() == true) {
+        $this->connection->begin_transaction();
+        try {
+            $query = "INSERT INTO purchase (id_watch, id_utente) VALUES (?, ?)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("ii", $this->id_watch, $this->id_utente);
+            $stmt->execute();
+            $this->connection->commit();
             return "ADDED";
-        } else {
+        } catch (\mysqli_sql_exception $exception) {
+            $this->connection->rollback();
             return "ERROR";
         }
     }
 
-    public function sold()
+    public function sold(): void
     {
-        $query = "UPDATE watch SET disponibile=? WHERE id_watch=?";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ii", $this->disponibile, $this->id_watch); 
-        $stmt->execute();  
+        $this->connection->begin_transaction();
+        try {
+            $query = "UPDATE watch SET disponibile=? WHERE id_watch=?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("ii", $this->disponibile, $this->id_watch);
+            $stmt->execute();
+            $this->connection->commit();
+        } catch (\mysqli_sql_exception $exception) {
+            $this->connection->rollback();
+        }
+
     }
 
-    public function seePurchases(): array
+    public function seePurchases()
     {
         $row = array();
         $finalresult = array();
         $i = 0;
-        $query = "SELECT * FROM purchase join watch ON purchase.id_watch=watch.id_watch JOIN user ON purchase.id_utente=user.id_utente JOIN model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand";
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_array()) {
-                $finalresult[$i] = $row;
-                $i++;
+        $this->connection->begin_transaction();
+        try{
+            $query = "SELECT * FROM purchase join watch ON purchase.id_watch=watch.id_watch JOIN user ON purchase.id_utente=user.id_utente JOIN model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand";
+            $stmt = $this->connection->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $this->connection->commit();
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_array()) {
+                    $finalresult[$i] = $row;
+                    $i++;
+                }
+                return $finalresult;
+            } else {
+                return array('message' => 'error');
             }
-            return $finalresult;
-        } else {
-            return array('message' => 'error');
-        } 
+        }catch(\mysqli_sql_exception $exception){
+            $this->connection->rollback();
+            return $exception;
+        }
+
     }
 }
 

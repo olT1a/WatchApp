@@ -112,10 +112,16 @@ class WatchModel
         $row = array();
         $finalresult = array();
         $i = 0;
-        $query = 'SELECT * FROM brand';
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $this->connection->begin_transaction();
+        try {
+            $query = 'SELECT * FROM brand';
+            $stmt = $this->connection->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $this->connection->commit();
+        } catch (\mysqli_sql_exception $exception) {
+            $this->connection->rollback();
+        }
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;
@@ -134,11 +140,17 @@ class WatchModel
         $finalresult = array();
         $i = 0;
         $brandName = $_POST['brandName'];
-        $query = "SELECT * FROM model WHERE id_brand=?";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("i", $brandName);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $this->connection->begin_transaction();
+        try {
+            $query = "SELECT * FROM model WHERE id_brand=?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("i", $brandName);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $this->connection->commit();
+        } catch (\mysqli_sql_exception $exception) {
+            $this->connection->rollback();
+        }
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;
@@ -157,11 +169,17 @@ class WatchModel
         $finalresult = array();
         $i = 0;
         $modelName = $_POST['modelName'];
-        $query = "SELECT * FROM model WHERE id_model=?";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("i", $modelName);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $this->connection->begin_transaction();
+        try {
+            $query = "SELECT * FROM model WHERE id_model=?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("i", $modelName);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $this->connection->commit();
+        } catch (\mysqli_sql_exception $exception) {
+            $this->connection->rollback();
+        }
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;
@@ -176,14 +194,19 @@ class WatchModel
     
     public function uploadsale(): string
     {
-        $query = "INSERT INTO watch (price, watch_condition, img, disponibile, id_model, id_brand, id_utente) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("dssiiii", $this->price, $this->condition, $this->img, $this->disponibile, $this->id_model, $this->id_brand,$this->id_user);
-        if($stmt->execute() == true){
+        $this->connection->begin_transaction();
+        try{
+            $query = "INSERT INTO watch (price, watch_condition, img, disponibile, id_model, id_brand, id_utente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("dssiiii", $this->price, $this->condition, $this->img, $this->disponibile, $this->id_model, $this->id_brand,$this->id_user);
+            $stmt->execute();
+            $this->connection->commit();
             return "ADDED";
-        } else{
+        }catch(\mysqli_sql_exception $exception){
+            $this->connection->rollback();
             return "ERROR";
-        }   
+        }
+        
     }
 
     public function watch(): array
@@ -191,10 +214,16 @@ class WatchModel
         $row = array();
         $finalresult = array();
         $i = 0;
-        $query = "SELECT * FROM watch join model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand JOIN user ON watch.id_utente=user.id_utente";
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $this->connection->begin_transaction();
+        try {
+            $query = "SELECT * FROM watch join model ON watch.id_model=model.id_model JOIN brand ON watch.id_brand=brand.id_brand JOIN user ON watch.id_utente=user.id_utente";
+            $stmt = $this->connection->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $this->connection->commit();
+        } catch (\mysqli_sql_exception $exception) {
+            $this->connection->rollback();
+        }
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $finalresult[$i] = $row;

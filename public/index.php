@@ -3,6 +3,7 @@
 use App\controllers\SiteController;
 use App\controllers\UserController;
 use App\controllers\WatchController;
+use App\controllers\PurchaseController;
 
 session_start();
 require_once '../vendor/autoload.php';
@@ -10,6 +11,7 @@ $request = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_SPECIAL_CHARS);
 $siteController = new SiteController();
 $userController = new UserController();
 $watchController = new WatchController();
+$purchaseController = new PurchaseController();
 
 switch ($request) {
     case '':
@@ -74,11 +76,11 @@ switch ($request) {
     case 'referenceHandler':
         $watchController->referenceHandler();
         break;
-    
+
     case 'saleHandler':
         $watchController->saleHandler();
         break;
-        
+
     case 'watchHandler':
         $watchController->watchHandler();
         break;
@@ -86,7 +88,17 @@ switch ($request) {
     case 'notDisponible':
         $siteController->notDisponible();
         break;
-        
+
+    case 'purchaseHandler':
+        $purchaseController->purchaseHandler();
+        break;
+
+    case 'purchases':
+        $siteController->purchases();
+        break;
+    case 'seePurchases':
+        $purchaseController->seePurchases();
+        break;
     default:
         $siteController->notFound();
         break;

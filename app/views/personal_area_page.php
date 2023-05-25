@@ -42,7 +42,7 @@ checkId();
 
                                 <div class="form-outline form-white mb-4">
 
-                                    <a href="#" class="btn btn-outline-light btn-lg px-5" id="btnBuy">purchases</a>
+                                    <a href="purchases" class="btn btn-outline-light btn-lg px-5" id="btnBuy">purchases</a>
                                 </div>
                                 <a href="LogoutHandler">Logout</a>
                             </div>

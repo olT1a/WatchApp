@@ -49,5 +49,10 @@ class SiteController
         require_once "../app/views/notDisponible.php";
     }
 
+    public function purchases()
+    {
+        require_once "../app/views/purchases_page.php";
+    }
+
 }
 ?>

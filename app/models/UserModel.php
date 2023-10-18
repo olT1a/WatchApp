@@ -5,14 +5,14 @@ namespace App\models;
 class UserModel
 {
     private $connection;
-    protected int $id;
-    protected string $mail;
-    protected string $username;
-    protected string $password;
+    private int $id;
+    private string $mail;
+    private string $username;
+    private string $password;
 
     public function __construct()
     {
-        $this->connection = new \mysqli('127.0.0.1', 'watchapp', 'oscar', 'watchapp');
+        $this->connection = new \mysqli('127.0.0.1', 'root', '', 'watchapp');
     }
 
     public function setId(int $id): void

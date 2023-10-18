@@ -27,17 +27,17 @@
                                 <form method="POST" action="RegistrationHandler">
                                     <div class="form-outline form-white mb-4">
                                         <input type="email" name="mail" placeholder="mail"
-                                            class="form-control form-control-lg" /><br>
+                                            class="form-control form-control-lg" required/><br>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
                                         <input type="text" name="user" placeholder="username"
-                                            class="form-control form-control-lg" /><br>
+                                            class="form-control form-control-lg" required/><br>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
                                         <input type="password" name="pwd" placeholder="password"
-                                            class="form-control form-control-lg" /><br>
+                                            class="form-control form-control-lg" required/><br>
                                     </div>
 
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>

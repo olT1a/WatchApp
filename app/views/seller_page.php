@@ -74,7 +74,7 @@ checkId();
 
                                     <div class="form-outline form-white mb-4">
                                         <label>Price (€)</label>
-                                        <input type="number" min=0 max=2000000 name="price"
+                                        <input type="number" min=1 max=2000000 name="price"
                                             class="form-control form-control-lg" required>
                                     </div>
 

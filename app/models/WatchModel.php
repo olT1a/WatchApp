@@ -5,20 +5,20 @@ namespace App\models;
 class WatchModel
 {
     private $connection;
-    protected int $id;
-    protected string $case_size;
-    protected float $price;
-    protected string $condition;
-    protected string $img;
-    protected bool $disponibile;
-    protected int $id_model;
-    protected int $id_brand;
-    protected int $id_user;
-    protected int $id_venditore;
+    private int $id;
+    private string $case_size;
+    private float $price;
+    private string $condition;
+    private string $img;
+    private bool $disponibile;
+    private int $id_model;
+    private int $id_brand;
+    private int $id_user;
+    private int $id_venditore;
 
     public function __construct()
     {
-        $this->connection = new \mysqli('127.0.0.1', 'watchapp', 'oscar', 'watchapp');
+        $this->connection = new \mysqli('127.0.0.1', 'root', '', 'watchapp');
     }
 
     public function setID(int $id): void

@@ -32,7 +32,7 @@ checkId();
 
                                     <div class="form-outline form-white mb-4">
                                         <label>Mail</label>
-                                        <input type="mail" name="mail" placeholder="mail"
+                                        <input type="email" name="mail" placeholder="mail"
                                             class="form-control form-control-lg"
                                             value="<?php echo $_SESSION['mail'] ?>" /><br>
                                     </div>

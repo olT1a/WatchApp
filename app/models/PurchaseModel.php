@@ -5,15 +5,15 @@ namespace App\models;
 class PurchaseModel
 {
     private $connection;
-    protected int $id;
-    protected int $id_utente;
-    protected int $id_watch;
-    protected bool $disponibile;
+    private int $id;
+    private int $id_utente;
+    private int $id_watch;
+    private bool $disponibile;
     //protected DateTimeInterface $purchase_date;
 
     public function __construct()
     {
-        $this->connection = new \mysqli('127.0.0.1', 'watchapp', 'oscar', 'watchapp');
+        $this->connection = new \mysqli('127.0.0.1', 'root', '', 'watchapp');
     }
 
     public function setID(int $id): void
